@@ -114,7 +114,7 @@ MEs = mergedMEs
 #####Statistical Analyses#####
 
 ##Import and reformat study traits file for statistical analysis
-MPOA_design_F <- read_excel("./data/MPOA_tagseq_variables_F.xlsx")
+MPOA_design_F <- read_csv("./data/datTraits_FM.csv")
 View(MPOA_design_F)
 
 #Factor prenatal BP groups, control group first
