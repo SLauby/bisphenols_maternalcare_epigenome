@@ -39,7 +39,7 @@ if (!gsg$allOK)
 
 #Import file that contains the study variables
 #Prenatal treatment group is dummy coded, all study variables need to be in numeric format otherwise the WGCNA code will not work
-datTraits_M <- read_csv("./data/datTraits_MPOA_M.csv", 
+datTraits_M <- read_csv("./data/datTraits_MM.csv", 
                         col_types = cols(ID = col_character(), 
                                          Group_1 = col_number(), Group_2 = col_number(), 
                                          Group_3 = col_number(), Nest_attendance_P1_5_scaled = col_number(), 
@@ -114,7 +114,7 @@ MEs = mergedMEs
 #####Statistical Analyses#####
 
 ##Import and reformat study traits file for statistical analysis
-MPOA_design_M <- read_csv("./data/datTraits_MM.csv")
+MPOA_design_M <- read_excel("./data/MPOA_tagseq_variables_M_outliersremoved.xlsx")
 View(MPOA_design_M)
 
 #Factor prenatal BP groups, control group first
