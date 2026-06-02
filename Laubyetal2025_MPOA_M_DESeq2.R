@@ -5,12 +5,12 @@ library(tidyverse)
 library(readxl)
 
 #####DEG Analysis####
-#Male mPFC
+#Male MPOA
 #Import tagseq counts and study variable files to R
-MPOA_tagseq_M <- read_excel("./data/MPOA_tagseq_counts_M_outliersremoved.xlsx")
+MPOA_tagseq_M <- read_excel("./data/MPOA_tagseq_counts_M.xlsx")
 View(MPOA_tagseq_M)
 
-MPOA_design_M <- read_excel("./data/MPOA_tagseq_variables_M_outliersremoved.xlsx")
+MPOA_design_M <- read_excel("./data/MPOA_tagseq_variables_M.xlsx")
 View(MPOA_design_M)
 
 #Format file for DESeq2 analysis

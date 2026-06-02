@@ -5,12 +5,12 @@ library(tidyverse)
 library(readxl)
 
 #####DEG Analysis####
-#Male mPFC
+#Female MPOA
 #Import tagseq counts and study variable files to R
-MPOA_tagseq_F <- read_excel("./data/MPOA_tagseq_counts_F_outliersremoved.xlsx")
+MPOA_tagseq_F <- read_excel("./data/MPOA_tagseq_counts_F.xlsx")
 View(MPOA_tagseq_M)
 
-MPOA_design_F <- read_excel("./data/MPOA_tagseq_variables_F_outliersremoved.xlsx")
+MPOA_design_F <- read_excel("./data/MPOA_tagseq_variables_F.xlsx")
 View(MPOA_design_F)
 
 #Format file for DESeq2 analysis
@@ -113,7 +113,7 @@ summary(res)
 head(resOrdered) #Lists top 10 DEGs by unadjusted pvalue
 
 #####Graphing interactions#####
-plotExpr_M <- read_csv("./DESeq2-MPOA-F-fullmodel.csv")
+plotExpr_F <- read_csv("./DESeq2-MPOA-F-fullmodel.csv")
 
 #An 'X' needs to be added to the top row of the first column of the file before reformatting the file
 colnames(plotExpr_F)[1] <- "X"
@@ -121,7 +121,7 @@ View(plotExpr_F)
 
 #Reformatting file for ggplot2
 plotExpr_F_matrix <- plotExpr_F[ , -1]
-row.names(plotExpr_M_matrix) <- plotExpr_F$X
+row.names(plotExpr_F_matrix) <- plotExpr_F$X
 plotExpr_F = as.data.frame(t(plotExpr_F_matrix))
 
 #Incorporating study variables into the normalized counts file

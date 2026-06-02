@@ -1,27 +1,18 @@
 library(methylKit)
 
-
-
-##All bismark-processed DNA methylation data files can be found on Zenodo: https://doi.org/10.5281/zenodo.17273659
-
-
-
-
-
-
 ####Female DMR Analyses####
 ###50 ug/kg BPA vs. Corn Oil Analyses###
 ##Preparing the methylation dataset for 50 ug/kg BPA vs. Corn Oil comparisons
-file.list=list(file.path("./2F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./33F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./49F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./50F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./14F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./5F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./73F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./84F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./93F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./9F1.sorted.dedup_resorted.bismark.cov"))
+file.list=list(file.path("./data/methylation/2F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/33F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/49F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/50F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/14F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/5F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/73F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/84F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/93F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/9F1.sorted.dedup_resorted.bismark.cov"))
 
 
 myobj_50BPA_F = methRead(file.list,
@@ -54,7 +45,7 @@ getMethylDiff(myDiff,difference=5,qvalue=0.05,type="hypo") #View hypomethylated 
 write.csv(myDiff5p, file="DMR_50BPA_F.csv", quote=FALSE)
 
 ##Calculating DMRs with licking/grooming covariate
-covariates=data.frame(LG=c(-0.3672,-0.0862,0.7289,1.7095,1.4393,0.6178,-0.0242,-0.4583,0.4071,-2.0255),batch=c(1,3,2,1,2,4,5,5,5,2))
+covariates=data.frame(LG=c(0.0777,0.401,1.338,2.466,2.155,1.210,0.472,-0.0271,0.968,-1.829),batch=c(1,3,2,1,2,4,5,5,5,2))
 
 myDiff=calculateDiffMeth(meth,
                          overdispersion = "MN",
@@ -73,18 +64,18 @@ write.csv(myDiff5p, file="DMR_50BPA_F_LG-Covariate.csv", quote=FALSE)
 ###50 ug/kg Mixed BP vs. Corn Oil Analyses###
 ##Preparing the methylation dataset for 50 ug/kg Mixed BP vs. Corn Oil comparisons
 
-file.list=list(file.path("./2F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./33F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./49F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./50F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./100F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./103F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./38F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./84F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./39F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./53F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./55F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./9F1.sorted.dedup_resorted.bismark.cov"))
+file.list=list(file.path("./data/methylation/2F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/33F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/49F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/50F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/100F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/103F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/38F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/84F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/39F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/53F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/55F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/9F1.sorted.dedup_resorted.bismark.cov"))
 
 
 myobj_50BP_F = methRead(file.list,
@@ -117,7 +108,7 @@ getMethylDiff(myDiff,difference=5,qvalue=0.05,type="hypo") #View hypomethylated 
 write.csv(myDiff5p, file="DMR_50BP_F.csv", quote=FALSE)
 
 ##Calculating DMRs with licking/grooming covariate
-covariates=data.frame(LG=c(-0.3672,-0.0862,0.7289,1.7095,-0.1949,-1.2297,0.4667,-0.4583,0.6471,-2.1009,-0.3703,-2.0255),batch=c(1,3,2,1,5,5,4,5,2,3,2,2))
+covariates=data.frame(LG=c(0.0777,0.401,1.338,2.466,0.276,-0.914,1.037,-0.0271,1.244,-1.916,0.0741,-1.829),batch=c(1,3,2,1,5,5,4,5,2,3,2,2))
 
 myDiff=calculateDiffMeth(meth,
                          overdispersion = "MN",
@@ -135,18 +126,18 @@ write.csv(myDiff5p, file="DMR_50BP_F_LG-Covariate.csv", quote=FALSE)
 
 ###150 ug/kg Mixed BP vs. Corn Oil Analyses###
 ##Preparing the methylation dataset for 150 ug/kg Mixed BP vs. Corn Oil comparisons
-file.list=list(file.path("./2F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./33F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./49F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./50F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./61F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./62F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./77F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./84F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./87F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./88F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./89F1.sorted.dedup_resorted.bismark.cov"),
-               file.path("./9F1.sorted.dedup_resorted.bismark.cov"))
+file.list=list(file.path("./data/methylation/2F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/33F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/49F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/50F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/61F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/62F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/77F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/84F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/87F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/88F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/89F1.sorted.dedup_resorted.bismark.cov"),
+               file.path("./data/methylation/9F1.sorted.dedup_resorted.bismark.cov"))
 
 myobj_150BP_F = methRead(file.list,
                          sample.id=list("2F1","33F1","49F1","50F1","61F1","62F1","77F1","84F1","87F1","88F1","89F1","9F1" ),
@@ -178,7 +169,7 @@ getMethylDiff(myDiff,difference=5,qvalue=0.05,type="hypo") #View hypomethylated 
 write.csv(myDiff5p, file="DMR_150BP_F.csv", quote=FALSE)
 
 ##Calculating DMRs with licking/grooming covariate
-covariates=data.frame(LG=c(-0.3672,-0.0862,0.7289,1.7095,0.6813,0.1238,0.096,-0.4583,-0.9733,-0.8783,-1.4305,-2.0255),batch=c(1,3,2,1,1,3,5,5,2,2,5,2))
+covariates=data.frame(LG=c(0.0777,0.401,1.338,2.466,1.283,0.642,0.610,-0.0271,-0.619,-0.510,-1.145,-1.829),batch=c(1,3,2,1,1,3,5,5,2,2,5,2))
 
 myDiff=calculateDiffMeth(meth,
                          overdispersion = "MN",
